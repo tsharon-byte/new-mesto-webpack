@@ -1,0 +1,9 @@
+:root {
+    --var-main-font: Inter;
+    --var-main-font-weight: 400;
+    --var-accent-font-weight: 400;
+    --var-main-color: #000;
+    --var-background-color: #fff;
+    --var-accent-color: #545454;
+    --var-accent-text-color: #C4C4C4;
+}

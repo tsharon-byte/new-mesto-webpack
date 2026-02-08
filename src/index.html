@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Место</title>
+  </head>
+  <body class="page theme-dark">
+    <div class="container">
+      <header class="header">
+        <a href="#" class="logo">
+          <svg class="logo__svg">
+            <use href="<%=require('./images/logo.svg#logo')%>"></use>
+          </svg>
+        </a>
+      </header>
+      <main class="main">
+        <section class="profile">
+          <img
+            class="profile__photo"
+            src="<%=require('./images/Avatar.jpg')%>"
+            alt="Фотография хозяина профиля"
+          />
+          <div class="profile__info">
+            <div class="profile__description-container">
+              <div class="profile__name">Жак-Ив Кусто</div>
+              <button class="button profile__edit-button">
+                <svg class="edit-button__svg">
+                  <use href="<%=require('./images/edit.svg#edit')%>"></use>
+                </svg>
+              </button>
+            </div>
+            <span class="profile__description">Исследователь океана</span>
+          </div>
+          <button
+            class="button profile__add-button"
+            onclick="window['add-dialog'].showModal()"
+            aria-controls="add-dialog"
+          >
+            <svg class="add-button__svg">
+              <use href="<%=require('./images/add.svg#add')%>"></use>
+            </svg>
+          </button>
+        </section>
+        <section class="elements"></section>
+      </main>
+      <footer><span>© 2020 Mesto Russia</span></footer>
+    </div>
+    <dialog class="add-dialog" id="add-dialog">
+      <h2 class="form__header">Новое место</h2>
+      <form class="add-dialog__form">
+        <label class="visually-hidden" for="place-name">Название </label>
+        <input
+          class="input"
+          type="text"
+          placeholder="Название"
+          id="place-name"
+        />
+        <label class="visually-hidden" for="place-url">Название</label>
+        <input
+          class="input"
+          type="text"
+          placeholder="Ссылка на картинку"
+          id="place-url"
+        />
+        <button
+          type="submit"
+          id="add-dialog__submit"
+          class="button dialog-button"
+        >
+          Создать
+        </button>
+      </form>
+      <form method="dialog" class="close-form">
+        <button class="close-button button">
+          <span class="visually-hidden">Закрыть окно</span>
+          <svg class="close__svg">
+            <use href="./images/close.svg#close"></use>
+          </svg>
+        </button>
+      </form>
+    </dialog>
+    <template id="card-template">
+      <article class="card">
+        <div class="image-container">
+          <img
+            class="card__image"
+            src="images/Karachaevsk.jpg"
+            alt="изображение места"
+          />
+        </div>
+        <div class="card__description">
+          <span class="card__title">Карачаевск</span>
+          <button class="button like__button"></button>
+        </div>
+        <button class="button delete__button"></button>
+      </article>
+    </template>
+  </body>
+</html>
