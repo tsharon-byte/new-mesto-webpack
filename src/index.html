@@ -52,13 +52,14 @@
     </div>
     <dialog class="add-dialog" id="add-dialog">
       <h2 class="form__header">Новое место</h2>
-      <form class="add-dialog__form">
+      <form class="add-dialog__form" name="add">
         <label class="visually-hidden" for="place-name">Название </label>
         <input
           class="input"
           type="text"
           placeholder="Название"
           id="place-name"
+          name="name"
         />
         <label class="visually-hidden" for="place-url">Название</label>
         <input
@@ -66,11 +67,13 @@
           type="text"
           placeholder="Ссылка на картинку"
           id="place-url"
+          name="url"
         />
         <button
           type="submit"
           id="add-dialog__submit"
-          class="button dialog-button"
+          class="button dialog-button input__btn_disabled"
+          disabled
         >
           Создать
         </button>
@@ -79,7 +82,7 @@
         <button class="close-button button">
           <span class="visually-hidden">Закрыть окно</span>
           <svg class="close__svg">
-            <use href="./images/close.svg#close"></use>
+            <use href="<%=require('./images/close.svg#close')%>"></use>
           </svg>
         </button>
       </form>

@@ -184,6 +184,7 @@
     width: 32px;
     height: 32px;
     fill: var(--var-main-color);
+    overflow: visible;
 }
 
 .add-dialog {
@@ -259,6 +260,7 @@
 }
 
 .close-form {
+    overflow: visible;
 }
 
 
@@ -279,4 +281,10 @@
 
 .like__button_active {
     background-image: url(../images/like_active.svg);
+}
+
+
+.input__btn_disabled {
+    background-color: #f1f1f1;
+    cursor: default;
 }
