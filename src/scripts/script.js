@@ -7,6 +7,7 @@ import {defaultCards} from "./data";
 
 const addDialog = document.getElementById("add-dialog");
 const profileDialog = document.getElementById("profile-dialog");
+const previewDialog = document.getElementById("preview-dialog");
 const addSubmit = document.getElementById("add-dialog__submit");
 const profileSubmit = document.getElementById("profile-dialog__submit");
 const editButton = document.querySelector(".profile__edit-button");
@@ -28,12 +29,14 @@ document.addEventListener("click", (e) => {
         addDialog.close();
     } else if (e.target.id === "profile-dialog") {
         profileDialog.close();
+    }else if(e.target.id === "preview-dialog") {
+        previewDialog.close();
     }
 })
 
 addPlaceForm.addEventListener("input", (e) => {
     const isFormValid = addPlaceForm.name.value.length > 0 && addPlaceForm.url.value.length > 0;
-    setSubmitButtonState(addSubmit,isFormValid);
+    setSubmitButtonState(addSubmit, isFormValid);
 })
 
 
@@ -57,7 +60,7 @@ function deleteButtonClick(event) {
     elementToDelete.remove();
 }
 
-function addPlace(name = "Карачаевск", place = "images/Karachaevsk.jpg") {
+function addPlace(name , place ) {
     const cardTemplate = document.querySelector("#card-template").content;
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const likeButton = cardElement.querySelector(".like__button");
@@ -69,10 +72,15 @@ function addPlace(name = "Карачаевск", place = "images/Karachaevsk.jpg
     deleteButton.addEventListener("click", deleteButtonClick);
 
     cards.append(cardElement);
+    cardElement.addEventListener('click', (event) => {
+        previewDialog.querySelector('#preview-image').src = place;
+        previewDialog.querySelector('#preview-caption').textContent = name;
+        previewDialog.showModal();
+    })
 }
 
 function init() {
-    defaultCards.forEach((card) => addPlace(card.name, card.place));
+    defaultCards.forEach(({name,place}) => addPlace(name, place));
 }
 
 editButton.addEventListener('click', (event) => {
@@ -91,7 +99,7 @@ profileForm.addEventListener("submit", (e) => {
 
 profileForm.addEventListener("input", (e) => {
     const isFormValid = profileForm.name.value.length > 0 && profileForm.description.value.length > 0;
-    setSubmitButtonState(profileSubmit,isFormValid);
+    setSubmitButtonState(profileSubmit, isFormValid);
 })
 
 init();

@@ -1,4 +1,6 @@
 import image from "../images/Karachaevsk.jpg";
+import elbrus from "../images/Elbrus.jpg";
+import dombai from "../images/Dombai.jpg";
 
 const defaultCards = [
     {
@@ -7,11 +9,11 @@ const defaultCards = [
     },
     {
         name: "Гора Эльбрус",
-        place: image,
+        place: elbrus,
     },
     {
         name: "Домбай",
-        place: image,
+        place: dombai,
     },
 ];
 export {defaultCards};

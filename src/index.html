@@ -50,7 +50,7 @@
       </main>
       <footer><span>© 2020 Mesto Russia</span></footer>
     </div>
-    <dialog class="add-dialog" id="add-dialog">
+    <dialog class="dialog" id="add-dialog">
       <h2 class="form__header">Новое место</h2>
       <form class="add-dialog__form" name="add">
         <label class="visually-hidden" for="place-name">Название </label>
@@ -87,7 +87,7 @@
         </button>
       </form>
     </dialog>
-    <dialog class="add-dialog" id="profile-dialog">
+    <dialog class="dialog" id="profile-dialog">
       <h2 class="form__header">Редактировать профиль</h2>
       <form class="add-dialog__form" name="profile">
         <label class="visually-hidden" for="profile-name">Имя автора </label>
@@ -114,6 +114,20 @@
           Сохранить
         </button>
       </form>
+      <form method="dialog" class="close-form">
+        <button class="close-button button">
+          <span class="visually-hidden">Закрыть окно</span>
+          <svg class="close__svg">
+            <use href="<%=require('./images/close.svg#close')%>"></use>
+          </svg>
+        </button>
+      </form>
+    </dialog>
+    <dialog class="dialog preview-dialog" id="preview-dialog">
+      <figure class="preview__figure">
+        <img class="preview__image" id="preview-image">
+        <figcaption id="preview-caption"></figcaption>
+      </figure>
       <form method="dialog" class="close-form">
         <button class="close-button button">
           <span class="visually-hidden">Закрыть окно</span>
