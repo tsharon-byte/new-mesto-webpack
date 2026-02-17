@@ -27,14 +27,14 @@
           />
           <div class="profile__info">
             <div class="profile__description-container">
-              <div class="profile__name">Жак-Ив Кусто</div>
+              <div class="profile__name" id="profile__name">Жак-Ив Кусто</div>
               <button class="button profile__edit-button">
                 <svg class="edit-button__svg">
                   <use href="<%=require('./images/edit.svg#edit')%>"></use>
                 </svg>
               </button>
             </div>
-            <span class="profile__description">Исследователь океана</span>
+            <span class="profile__description" id="profile__description">Исследователь океана</span>
           </div>
           <button
             class="button profile__add-button"
@@ -76,6 +76,42 @@
           disabled
         >
           Создать
+        </button>
+      </form>
+      <form method="dialog" class="close-form">
+        <button class="close-button button">
+          <span class="visually-hidden">Закрыть окно</span>
+          <svg class="close__svg">
+            <use href="<%=require('./images/close.svg#close')%>"></use>
+          </svg>
+        </button>
+      </form>
+    </dialog>
+    <dialog class="add-dialog" id="profile-dialog">
+      <h2 class="form__header">Редактировать профиль</h2>
+      <form class="add-dialog__form" name="profile">
+        <label class="visually-hidden" for="profile-name">Имя автора </label>
+        <input
+                class="input"
+                type="text"
+                placeholder="Имя автора"
+                id="profile-name"
+                name="name"
+        />
+        <label class="visually-hidden" for="profile-description">Название</label>
+        <input
+                class="input"
+                type="text"
+                placeholder="Название"
+                id="profile-description"
+                name="description"
+        />
+        <button
+                type="submit"
+                id="profile-dialog__submit"
+                class="button dialog-button"
+        >
+          Сохранить
         </button>
       </form>
       <form method="dialog" class="close-form">

@@ -6,8 +6,13 @@ import "../styles/variables.css";
 import {defaultCards} from "./data";
 
 const addDialog = document.getElementById("add-dialog");
+const profileDialog = document.getElementById("profile-dialog");
 const addSubmit = document.getElementById("add-dialog__submit");
+const editButton = document.querySelector(".profile__edit-button");
+const profileName=document.querySelector("#profile__name");
+const profileDescription=document.querySelector("#profile__description");
 const addPlaceForm = document.forms.add;
+const profileForm = document.forms.profile;
 const cards = document.querySelector(".elements");
 addPlaceForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -16,6 +21,15 @@ addPlaceForm.addEventListener("submit", (e) => {
     addPlaceForm.reset();
     setSubmitButtonState(false);
 });
+
+document.addEventListener("click", (e) => {
+    if (e.target.id === "add-dialog") {
+        addDialog.close();
+    }
+    else if (e.target.id === "profile-dialog") {
+        profileDialog.close();
+    }
+})
 
 addPlaceForm.addEventListener("input", (e) => {
     const isFormValid = addPlaceForm.name.value.length > 0 && addPlaceForm.url.value.length > 0;
@@ -60,5 +74,11 @@ function addPlace(name = "Карачаевск", place = "images/Karachaevsk.jpg
 function init() {
     defaultCards.forEach((card) => addPlace(card.name, card.place));
 }
+
+editButton.addEventListener('click', (event) => {
+    profileDialog.showModal();
+    profileForm.name.value=profileName.textContent;
+    profileForm.description.value=profileDescription.textContent;
+})
 
 init();
