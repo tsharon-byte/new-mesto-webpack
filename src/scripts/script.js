@@ -10,7 +10,7 @@ import {
     handleAddPlaceSubmit, handleDialog,
     handleProfileFormSubmit,
     profileDialogShow,
-    profileFormValidate, validateAddPlaceForm
+    profileFormValidate, setEventListeners, validateAddPlaceForm
 } from "./components/modal";
 
 const openAddDialogButton=document.querySelector("#open-add-dialog");
@@ -24,11 +24,13 @@ function init() {
 openAddDialogButton.addEventListener('click',addDialogShow);
 editButton.addEventListener('click', profileDialogShow);
 
-profileForm.addEventListener("input", profileFormValidate);
+//profileForm.addEventListener("input", profileFormValidate);
+setEventListeners(profileForm);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 addPlaceForm.addEventListener("submit", handleAddPlaceSubmit);
-addPlaceForm.addEventListener("input", validateAddPlaceForm);
+//addPlaceForm.addEventListener("input", validateAddPlaceForm);
+setEventListeners(addPlaceForm);
 
 document.addEventListener("click", handleDialog);
 

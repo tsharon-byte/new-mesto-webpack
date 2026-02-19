@@ -50,9 +50,9 @@
       </main>
       <footer><span>© 2020 Mesto Russia</span></footer>
     </div>
-    <dialog class="dialog" id="add-dialog">
+    <dialog class="dialog" id="add-dialog" >
       <h2 class="form__header">Новое место</h2>
-      <form class="add-dialog__form" name="add">
+      <form class="add-dialog__form" name="add" novalidate>
         <label class="visually-hidden" for="place-name">Название </label>
         <input
           class="input"
@@ -60,19 +60,23 @@
           placeholder="Название"
           id="place-name"
           name="name"
+          required
         />
+        <span id="place-name-error" class="form__error"></span>
         <label class="visually-hidden" for="place-url">Название</label>
         <input
           class="input"
-          type="text"
+          type="url"
           placeholder="Ссылка на картинку"
           id="place-url"
           name="url"
+          required
         />
+        <span id="place-url-error" class="form__error"></span>
         <button
           type="submit"
           id="add-dialog__submit"
-          class="button dialog-button input__btn_disabled"
+          class="button dialog-button input__btn_disabled submit"
           disabled
         >
           Создать
@@ -89,7 +93,7 @@
     </dialog>
     <dialog class="dialog" id="profile-dialog">
       <h2 class="form__header">Редактировать профиль</h2>
-      <form class="add-dialog__form" name="profile">
+      <form class="add-dialog__form" name="profile" novalidate>
         <label class="visually-hidden" for="profile-name">Имя автора </label>
         <input
                 class="input"
@@ -97,7 +101,9 @@
                 placeholder="Имя автора"
                 id="profile-name"
                 name="name"
+                required
         />
+        <span id="profile-name-error" class="form__error"></span>
         <label class="visually-hidden" for="profile-description">Название</label>
         <input
                 class="input"
@@ -105,11 +111,13 @@
                 placeholder="Название"
                 id="profile-description"
                 name="description"
+                required
         />
+        <span id="profile-description-error" class="form__error"></span>
         <button
                 type="submit"
                 id="profile-dialog__submit"
-                class="button dialog-button"
+                class="button dialog-button submit"
         >
           Сохранить
         </button>
@@ -142,12 +150,11 @@
         <div class="image-container">
           <img
             class="card__image"
-            src="images/Karachaevsk.jpg"
             alt="изображение места"
           />
         </div>
         <div class="card__description">
-          <span class="card__title">Карачаевск</span>
+          <span class="card__title"></span>
           <button class="button like__button"></button>
         </div>
         <button class="button delete__button"></button>

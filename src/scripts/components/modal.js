@@ -44,9 +44,16 @@ function validateAddPlaceForm(e) {
 }
 
 function profileDialogShow(event) {
-    profileDialog.showModal();
     profileForm.name.value = profileName.textContent;
     profileForm.description.value = profileDescription.textContent;
+    const button = profileForm.querySelector('.submit');
+    const inputList = Array.from(profileForm.querySelectorAll('.input'));
+    setSubmitButtonState(button, true);
+    inputList.forEach(input => {
+            checkInputValidity(profileForm, input);
+        }
+    )
+    profileDialog.showModal();
 }
 
 function addDialogShow(event) {
@@ -64,4 +71,55 @@ function profileFormValidate(e) {
     const isFormValid = profileForm.name.value.length > 0 && profileForm.description.value.length > 0;
     setSubmitButtonState(profileSubmit, isFormValid);
 }
-export {addDialogShow, profileFormValidate,handleProfileFormSubmit, profileDialogShow, validateAddPlaceForm, handleAddPlaceSubmit, setSubmitButtonState, handleDialog}
+
+function isFormValid(inputList) {
+    return !inputList.some(item => !item.validity.valid);
+}
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.add('form__input_type_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('form__input-error_active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove('form__input_type_error');
+    errorElement.classList.remove('form__input-error_active');
+    errorElement.textContent = '';
+};
+
+
+const checkInputValidity = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+        hideInputError(formElement, inputElement);
+    }
+};
+
+function setEventListeners(form) {
+    const button = form.querySelector('.submit');
+    const inputList = Array.from(form.querySelectorAll('.input'));
+    setSubmitButtonState(button, isFormValid(inputList));
+    inputList.forEach(input => {
+            input.addEventListener('input', (event) => {
+                checkInputValidity(form, input);
+                setSubmitButtonState(button, isFormValid(inputList));
+            })
+        }
+    )
+}
+
+export {
+    addDialogShow,
+    profileFormValidate,
+    handleProfileFormSubmit,
+    profileDialogShow,
+    validateAddPlaceForm,
+    handleAddPlaceSubmit,
+    setSubmitButtonState,
+    handleDialog,
+    setEventListeners
+}

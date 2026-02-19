@@ -220,7 +220,7 @@
     min-width: 433px;
     height: 562px;
     gap: 0;
-    border:none;
+    border: none;
 }
 
 .preview__figure {
@@ -315,4 +315,13 @@
 .input__btn_disabled {
     background-color: #f1f1f1;
     cursor: default;
+}
+
+.form__input_type_error {
+    border: 1px solid red;
+    color: red;
+}
+
+.form__error {
+    color: red;
 }
