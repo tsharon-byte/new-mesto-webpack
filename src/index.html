@@ -52,7 +52,7 @@
     </div>
     <dialog class="dialog" id="add-dialog" >
       <h2 class="form__header">Новое место</h2>
-      <form class="add-dialog__form" name="add" novalidate>
+      <form class="add-dialog__form popup__form" name="add" novalidate>
         <label class="visually-hidden" for="place-name">Название </label>
         <input
           class="input"
@@ -61,6 +61,10 @@
           id="place-name"
           name="name"
           required
+          minlength="2"
+          maxlength="30"
+          pattern="^[a-zA-Zа-яА-яЁё\-\s]+$"
+          data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         />
         <span id="place-name-error" class="form__error"></span>
         <label class="visually-hidden" for="place-url">Название</label>
@@ -76,7 +80,7 @@
         <button
           type="submit"
           id="add-dialog__submit"
-          class="button dialog-button input__btn_disabled submit"
+          class="button dialog-button input__btn_disabled popup__submit"
           disabled
         >
           Создать
@@ -93,7 +97,7 @@
     </dialog>
     <dialog class="dialog" id="profile-dialog">
       <h2 class="form__header">Редактировать профиль</h2>
-      <form class="add-dialog__form" name="profile" novalidate>
+      <form class="add-dialog__form popup__form" name="profile" novalidate>
         <label class="visually-hidden" for="profile-name">Имя автора </label>
         <input
                 class="input"
@@ -105,7 +109,7 @@
                 minlength="2"
                 maxlength="40"
                 pattern="^[a-zA-Zа-яА-яЁё\-\s]+$"
-                data-error-message="Разрешены только латинские и русские буквы, символ тире и пробел"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         />
         <span id="profile-name-error" class="form__error"></span>
         <label class="visually-hidden" for="profile-description">Название</label>
@@ -119,13 +123,13 @@
                 minlength="2"
                 maxlength="200"
                 pattern="^[a-zA-Zа-яА-яЁё\-\s]+$"
-                data-error-message="Разрешены только латинские и русские буквы, символ тире и пробел"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         />
         <span id="profile-description-error" class="form__error"></span>
         <button
                 type="submit"
                 id="profile-dialog__submit"
-                class="button dialog-button submit"
+                class="button dialog-button popup__submit"
         >
           Сохранить
         </button>

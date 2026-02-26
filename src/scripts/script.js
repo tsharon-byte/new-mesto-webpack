@@ -10,10 +10,10 @@ import {
     handleAddPlaceSubmit, handleDialog,
     handleProfileFormSubmit,
     profileDialogShow,
-    setEventListeners
 } from "./components/modal";
+import {enableValidation} from "./validation";
 
-const openAddDialogButton=document.querySelector("#open-add-dialog");
+const openAddDialogButton = document.querySelector("#open-add-dialog");
 const profileForm = document.forms.profile;
 const editButton = document.querySelector(".profile__edit-button");
 const addPlaceForm = document.forms.add;
@@ -21,14 +21,12 @@ const addPlaceForm = document.forms.add;
 function init() {
     defaultCards.forEach(({name, place}) => addPlace(name, place));
 }
-openAddDialogButton.addEventListener('click',addDialogShow);
+
+openAddDialogButton.addEventListener('click', addDialogShow);
 editButton.addEventListener('click', profileDialogShow);
-setEventListeners(profileForm);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
-
 addPlaceForm.addEventListener("submit", handleAddPlaceSubmit);
-setEventListeners(addPlaceForm);
-
 document.addEventListener("click", handleDialog);
 
 init();
+enableValidation();
