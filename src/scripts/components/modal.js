@@ -1,5 +1,7 @@
 import {addPlace} from "./card";
 
+const ERROR_MESSAGE = "Разрешены только латинские и русские буквы, символ тире и пробел";
+
 const addDialog = document.getElementById("add-dialog");
 const profileDialog = document.getElementById("profile-dialog");
 const previewDialog = document.getElementById("preview-dialog");
@@ -38,11 +40,6 @@ function handleAddPlaceSubmit(event) {
     setSubmitButtonState(addSubmit, false);
 }
 
-function validateAddPlaceForm(e) {
-    const isFormValid = addPlaceForm.name.value.length > 0 && addPlaceForm.url.value.length > 0;
-    setSubmitButtonState(addSubmit, isFormValid);
-}
-
 function profileDialogShow(event) {
     profileForm.name.value = profileName.textContent;
     profileForm.description.value = profileDescription.textContent;
@@ -67,11 +64,6 @@ function handleProfileFormSubmit(e) {
     profileDialog.close();
 }
 
-function profileFormValidate(e) {
-    const isFormValid = profileForm.name.value.length > 0 && profileForm.description.value.length > 0;
-    setSubmitButtonState(profileSubmit, isFormValid);
-}
-
 function isFormValid(inputList) {
     return !inputList.some(item => !item.validity.valid);
 }
@@ -92,6 +84,15 @@ const hideInputError = (formElement, inputElement) => {
 
 
 const checkInputValidity = (formElement, inputElement) => {
+    if (inputElement.validity.patternMismatch) {
+        // встроенный метод setCustomValidity принимает на вход строку
+        // и заменяет ею стандартное сообщение об ошибке
+        inputElement.setCustomValidity(inputElement.dataset.errorMessage||ERROR_MESSAGE);
+    } else {
+        // если передать пустую строку, то будут доступны
+        // стандартные браузерные сообщения
+        inputElement.setCustomValidity("");
+    }
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -114,10 +115,8 @@ function setEventListeners(form) {
 
 export {
     addDialogShow,
-    profileFormValidate,
     handleProfileFormSubmit,
     profileDialogShow,
-    validateAddPlaceForm,
     handleAddPlaceSubmit,
     setSubmitButtonState,
     handleDialog,
