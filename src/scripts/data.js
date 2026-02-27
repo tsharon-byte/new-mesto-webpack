@@ -5,15 +5,15 @@ import dombai from "../images/Dombai.jpg";
 const defaultCards = [
     {
         name: "Карачаевск",
-        place: image,
+        link: image,
     },
     {
         name: "Гора Эльбрус",
-        place: elbrus,
+        link: elbrus,
     },
     {
         name: "Домбай",
-        place: dombai,
+        link: dombai,
     },
 ];
 export {defaultCards};
