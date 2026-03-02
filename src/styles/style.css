@@ -45,6 +45,7 @@
 .profile {
     display: flex;
     justify-content: space-between;
+    gap: 30px;
 }
 
 .elements {
@@ -80,6 +81,15 @@
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 0;
+}
+
+.like-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.likes {
+    padding: 3px;
 }
 
 .like__button {
@@ -122,13 +132,14 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: calc(100% - 150px - 120px - 60px);
 }
 
 .profile__description-container {
     display: flex;
     flex-direction: row;
     gap: 17px;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 
@@ -164,9 +175,32 @@
 }
 
 .profile__photo {
+    position: relative;
     border-radius: 50%;
     width: 120px;
     height: 120px;
+    border: 1px solid var(--var-main-color);
+}
+
+.profile__photo:hover {
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+.profile__photo::before {
+    content: "";
+    display: none;
+    position: absolute;
+    top: calc(50% - 13px);
+    left: calc(50% - 13px);
+    background-image: url(../images/edit.svg);
+    width: 26px;
+    height: 26px;
+    z-index: 22;
+}
+
+.profile__photo:hover::before {
+    display: block;
 }
 
 .profile__add-button {
